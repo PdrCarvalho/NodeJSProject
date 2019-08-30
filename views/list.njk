@@ -1,7 +1,11 @@
-<h1>Usuarios:</h1>
-<ul>
-{%for user in users%}
-<li>{{user}}</li>
+<h1>Jogadores:</h1>
+<form action=+{{player}} method="GET">
+    <input name = "position" placeholder="Digite a posição"/>
+    <button type = "submit">Procurar por Posição</button>
+</form>
+<ol>
+{%for ply in playersList %}
+<li>Jogador: {{ply.player}} Score: {{ply.score}}</li>
 {% endfor%}
-</ul>
-<a href="new">Cadastro</a>
+</ol>
+<a href="new">Adicionar/Alterar pontuação</a>

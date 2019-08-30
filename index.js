@@ -1,5 +1,7 @@
 const express = require('express')
 const nunjunks = require('nunjucks')
+const rank = require('./controller/rankController')
+const play = require('./controller/playerController')
 const app = express()
 nunjunks.configure('views', {
   autoescape: true,
@@ -13,16 +15,12 @@ const logMiddleware = (req, res, next) => {
 }
 app.set('view engine', 'njk')
 app.use(logMiddleware)
-const users = ['Pedro', 'cardoso', 'carvalho']
-app.get('/', (req, res) => {
-  res.render('list', { users })
-})
+// const users = ['Pedro', 'cardoso', 'carvalho']
+app.get('/', rank.topTen)
 app.get('/new', (req, res) => {
   res.render('new')
 })
-app.post('/create', (req, res) => {
-  users.push(req.body.user)
-  res.redirect('/')
-})
+app.get('/:position',rank.getPositionPlayer)
+app.post('/create', play.insertPlayer)
 
 app.listen(3000)
