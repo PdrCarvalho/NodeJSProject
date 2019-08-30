@@ -28,20 +28,6 @@ exports.getPositionPlayer = (req, res) => {
     if(!position){  
        position = req.params.position - 1
     }
-    // rankService.getPositionPlayer('ranking:player', position, (err, result) => {
-    //     if (err) {
-    //         res.status(500)
-    //     }
-    //     else {
-    //         var player = {
-    //             "player" : result[0],
-    //             "score" :  result[1]
-    //         }
-    //         playersList=[]
-    //         playersList[0] = player 
-    //         res.render('player', { playersList })
-    //     }
-    // });
     rankService.getAll('ranking:player', (err, result) => {
         if (err) {
             res.status(500)

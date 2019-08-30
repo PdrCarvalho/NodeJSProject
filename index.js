@@ -15,7 +15,6 @@ const logMiddleware = (req, res, next) => {
 }
 app.set('view engine', 'njk')
 app.use(logMiddleware)
-// const users = ['Pedro', 'cardoso', 'carvalho']
 app.get('/', rank.topTen)
 app.get('/new', (req, res) => {
   res.render('new')
