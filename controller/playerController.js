@@ -5,7 +5,7 @@ exports.insertPlayer = (req, res) => {
         if((player)&&(score)){
         playerService.insertPlayer('ranking:player',score, player, (err) => {
             if (err) {
-                res.status(500).jsonp({error : 'Internal error'})
+                res.status(500)
             }
             else {
                 res.redirect('/')
